@@ -59,7 +59,18 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) flags() {
-	// TODO
+	flag.StringVar(&this.country, "country", "", "The country field.")
+	flag.StringVar(&this.language, "language", "", "The language field.")
+	flag.StringVar(&this.freeform, "freeform", "", "The freeform field.")
+	flag.StringVar(&this.address1, "address1", "", "The address1 field.")
+	flag.StringVar(&this.address2, "address2", "", "The address2 field.")
+	flag.StringVar(&this.address3, "address3", "", "The address3 field.")
+	flag.StringVar(&this.address4, "address4", "", "The address4 field.")
+	flag.StringVar(&this.organization, "organization", "", "The organization field.")
+	flag.StringVar(&this.locality, "locality", "", "The locality field.")
+	flag.StringVar(&this.administrativeArea, "administrative_area", "", "The administrative_area field.")
+	flag.StringVar(&this.postalCode, "postal_code", "", "The postal_code field.")
+	flag.BoolVar(&this.geocode, "geocode", true, "The geocode field.")
 	flag.Parse()
 }
 
@@ -79,8 +90,8 @@ func (this *Inputs) AssembleLookup() *street.Lookup {
 
 	this.assembleLookupFromFlags()
 
-	if this.lookup.Freeform != "" || this.lookup.Address1 != "" {
-		log.Fatal("No street provided.")
+	if this.lookup.Freeform == "" && this.lookup.Address1 == "" {
+		log.Fatal("No address provided.")
 	}
 
 	return this.lookup
