@@ -71,7 +71,7 @@ func (this *Inputs) flags() {
 	flag.StringVar(&this.administrativeArea, "administrative_area", "", "The administrative_area field.")
 	flag.StringVar(&this.postalCode, "postal_code", "", "The postal_code field.")
 	flag.BoolVar(&this.geocode, "geocode", true, "The geocode field.")
-	flag.Parse()
+	this.ParseFlags()
 }
 
 func (this *Inputs) AssembleLookup() *street.Lookup {

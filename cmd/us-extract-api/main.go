@@ -57,7 +57,7 @@ func (this *Inputs) Flags() {
 	flag.BoolVar(&this.aggressive, "aggressive", false, "The aggressive bool.")
 	flag.BoolVar(&this.lineBreaks, "addr_line_breaks", true, "The addr_line_breaks bool.")
 	flag.IntVar(&this.addressesPerLine, "addr_per_line", 0, "T:he add_per_line field.")
-	flag.Parse()
+	this.ParseFlags()
 }
 
 func (this *Inputs) AssembleLookup() *extract.Lookup {

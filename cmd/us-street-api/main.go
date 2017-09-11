@@ -77,7 +77,7 @@ func (this *Inputs) flags() {
 	flag.StringVar(&this.inputID, "input_id", "", "The Input ID (US Street API, US ZIP Code API)")
 	flag.IntVar(&this.maxCandidateCount, "candidates", 10, "The max candidate count (US Street API)")
 	flag.StringVar(&this.matchStrategy, "match", string(street.MatchStrict), "The Match Strategy (US Street API)")
-	flag.Parse()
+	this.ParseFlags()
 }
 
 func (this *Inputs) PopulateBatch() *street.Batch {

@@ -62,7 +62,7 @@ func (this *Inputs) Flags() {
 	flag.StringVar(&this.cityFilter, "city_filter", "", "The city_filter field.")
 	flag.StringVar(&this.stateFilter, "state_filter", "", "The state_filter field.")
 	flag.IntVar(&this.suggestions, "suggestions", 10, "The suggestions field.")
-	flag.Parse()
+	this.ParseFlags()
 }
 
 func (this *Inputs) AssembleLookup() *autocomplete.Lookup {

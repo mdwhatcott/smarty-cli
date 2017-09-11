@@ -57,7 +57,7 @@ func (this *Inputs) Flags() {
 	flag.StringVar(&this.city, "city", "", "The City (US Street API, US ZIP Code API)")
 	flag.StringVar(&this.state, "state", "", "The State (US Street API, US ZIP Code API)")
 	flag.StringVar(&this.zipCode, "zipcode", "", "The ZIP Code (US Street API, US ZIP Code API)")
-	flag.Parse()
+	this.ParseFlags()
 }
 
 func (this *Inputs) PopulateBatch() *zipcode.Batch {
