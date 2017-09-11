@@ -79,19 +79,19 @@ func (this *Inputs) PopulateBatch() *zipcode.Batch {
 }
 func (this *Inputs) assembleLookup() *zipcode.Lookup {
 	values, _ := url.ParseQuery(this.RawQuery)
-	this.assembleUSZIPCodeLookupFromQueryString(values)
+	this.assembleLookupFromQueryString(values)
 	if this.lookup.City != "" || this.lookup.State != "" || this.lookup.ZIPCode != "" {
 		return this.lookup
 	}
 
 	if address, _ := url.Parse(this.RawURL); address != nil {
-		this.assembleUSZIPCodeLookupFromQueryString(address.Query())
+		this.assembleLookupFromQueryString(address.Query())
 	}
 	if this.lookup.City != "" || this.lookup.State != "" || this.lookup.ZIPCode != "" {
 		return this.lookup
 	}
 
-	this.assembleUSZIPCodeLookupFromFlags()
+	this.assembleLookupFromFlags()
 
 	if this.lookup.City == "" && this.lookup.State == "" && this.lookup.ZIPCode == "" {
 		log.Fatal("No data provided.")
@@ -99,12 +99,12 @@ func (this *Inputs) assembleLookup() *zipcode.Lookup {
 
 	return this.lookup
 }
-func (this *Inputs) assembleUSZIPCodeLookupFromFlags() {
+func (this *Inputs) assembleLookupFromFlags() {
 	this.lookup.City = this.city
 	this.lookup.State = this.state
 	this.lookup.ZIPCode = this.zipCode
 }
-func (this *Inputs) assembleUSZIPCodeLookupFromQueryString(values url.Values) {
+func (this *Inputs) assembleLookupFromQueryString(values url.Values) {
 	this.lookup.City = values.Get("city")
 	this.lookup.State = values.Get("state")
 	this.lookup.ZIPCode = values.Get("zipCode")

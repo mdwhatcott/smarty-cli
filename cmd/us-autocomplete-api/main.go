@@ -67,19 +67,19 @@ func (this *Inputs) Flags() {
 
 func (this *Inputs) AssembleLookup() *autocomplete.Lookup {
 	values, _ := url.ParseQuery(this.RawQuery)
-	this.assembleUSZIPCodeLookupFromQueryString(values)
+	this.assembleLookupFromQueryString(values)
 	if this.lookup.Prefix != "" {
 		return this.lookup
 	}
 
 	if address, _ := url.Parse(this.RawURL); address != nil {
-		this.assembleUSZIPCodeLookupFromQueryString(address.Query())
+		this.assembleLookupFromQueryString(address.Query())
 	}
 	if this.lookup.Prefix != "" {
 		return this.lookup
 	}
 
-	this.assembleUSZIPCodeLookupFromFlags()
+	this.assembleLookupFromFlags()
 
 	if this.lookup.Prefix == "" {
 		log.Fatal("No prefix provided.")
@@ -87,7 +87,7 @@ func (this *Inputs) AssembleLookup() *autocomplete.Lookup {
 
 	return this.lookup
 }
-func (this *Inputs) assembleUSZIPCodeLookupFromFlags() {
+func (this *Inputs) assembleLookupFromFlags() {
 	this.lookup.Prefix = this.prefix
 	this.lookup.CityFilter = strings.Split(this.cityFilter, ",")
 	this.lookup.StateFilter = strings.Split(this.stateFilter, ",")
@@ -102,7 +102,7 @@ func (this *Inputs) assembleUSZIPCodeLookupFromFlags() {
 	}
 	this.lookup.MaxSuggestions = this.suggestions
 }
-func (this *Inputs) assembleUSZIPCodeLookupFromQueryString(values url.Values) {
+func (this *Inputs) assembleLookupFromQueryString(values url.Values) {
 	this.lookup.Prefix = values.Get("prefix")
 	this.lookup.CityFilter = strings.Split(values.Get("city_filter"), ",")
 	this.lookup.StateFilter = strings.Split(values.Get("state_filter"), ",")
