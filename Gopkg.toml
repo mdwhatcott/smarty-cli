@@ -1,0 +1,7 @@
+[[constraint]]
+  branch = "master"
+  name = "github.com/mdwhatcott/helps"
+
+[[constraint]]
+  name = "github.com/smartystreets/smartystreets-go-sdk"
+  version = "6.4.0"
