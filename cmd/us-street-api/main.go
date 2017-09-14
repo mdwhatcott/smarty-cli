@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strconv"
 
-	cli "bitbucket.org/michael-whatcott/smarty-cli"
 	"github.com/mdwhatcott/helps"
+	"github.com/mdwhatcott/smarty-cli"
 	"github.com/smartystreets/smartystreets-go-sdk/us-street-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
 )

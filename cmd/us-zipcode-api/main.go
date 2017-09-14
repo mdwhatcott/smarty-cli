@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/url"
 
-	cli "bitbucket.org/michael-whatcott/smarty-cli"
 	"github.com/mdwhatcott/helps"
+	"github.com/mdwhatcott/smarty-cli"
 	"github.com/smartystreets/smartystreets-go-sdk/us-zipcode-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
 )
