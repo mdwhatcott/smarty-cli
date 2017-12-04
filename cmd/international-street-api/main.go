@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"sort"
+	"strings"
 
 	"github.com/mdwhatcott/helps"
 	"github.com/mdwhatcott/smarty-cli"
-	"github.com/smartystreets/smartystreets-go-sdk/international-street-api"
+	street "github.com/smartystreets/smartystreets-go-sdk/international-street-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
 )
 
@@ -33,6 +35,7 @@ func main() {
 type Inputs struct {
 	*cli.Inputs
 
+	example            string
 	country            string
 	language           string
 	freeform           string
@@ -59,6 +62,13 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) flags() {
+	var labels []string
+	for example := range examples {
+		labels = append(labels, example)
+	}
+	sort.Strings(labels)
+
+	flag.StringVar(&this.example, "example", "", "The label of the example lookup you wish to submit (ie. "+strings.Join(labels, ", ")+").")
 	flag.StringVar(&this.country, "country", "", "The country field.")
 	flag.StringVar(&this.language, "language", "", "The language field.")
 	flag.StringVar(&this.freeform, "freeform", "", "The freeform field.")
@@ -75,6 +85,9 @@ func (this *Inputs) flags() {
 }
 
 func (this *Inputs) AssembleLookup() *street.Lookup {
+	if example, found := examples[this.example]; found {
+		return example
+	}
 	values, _ := url.ParseQuery(this.RawQuery)
 	this.assembleLookupFromQueryString(values)
 	if this.lookup.Freeform != "" || this.lookup.Address1 != "" {
@@ -125,3 +138,50 @@ func (this *Inputs) assembleLookupFromFlags() {
 	this.lookup.PostalCode = this.postalCode
 	this.lookup.Geocode = this.geocode
 }
+
+var (
+	examples = map[string]*street.Lookup{
+		"ireland1": {
+			Address1: "45/47 Nassau Street",
+			Locality: "Dublin",
+			Country:  "IRL",
+			Geocode:  true,
+		},
+		"brazil-mtc": {
+			Address1:           "R. Antônio Lopes Martin, 121",
+			Locality:           "São Paulo",
+			AdministrativeArea: "SP",
+			PostalCode:         "02516-040",
+			Country:            "BRA",
+			Geocode:            true,
+		},
+		"brazil-maceio": {
+			Address1: "Av. Dom Antônio Brandão, No. 333 Sala 402",
+			Address2: "Farol - Maceió, AL 57021-190",
+			Country:  "BRA",
+			Geocode:  true,
+		},
+		"japan1": {
+			Address1: "〒100-8994",
+			Address2: "東京都中央区八重洲1-5-3",
+			Address3: "東京中央郵便局",
+			Country:  "JPN",
+			Geocode:  true,
+		},
+		"japan2": {
+			Address1:   "Tokyo Central Post Office",
+			Address2:   "5-3, Yaesu 1-Chome",
+			Address3:   "Chuo-ku",
+			Locality:   "Tokyo",
+			PostalCode: "100-8994",
+			Country:    "JPN",
+			Geocode:    true,
+		},
+		"jetbrains": {
+			Address1: "Na hřebenech II 1718/10",
+			Address2: "14000 Prague 4",
+			Country:  "Czech Republic",
+			Geocode:  true,
+		},
+	}
+)
