@@ -18,8 +18,10 @@ func main() {
 	log.SetFlags(log.Lmicroseconds)
 
 	inputs := NewInputs()
-	builder := wireup.NewClientBuilder().WithSecretKeyCredential(inputs.AuthID, inputs.AuthToken).WithDebugHTTPOutput()
-	client := builder.BuildUSStreetAPIClient()
+	client := wireup.BuildUSStreetAPIClient(
+		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
+		wireup.DebugHTTPOutput(),
+	)
 	batch := inputs.PopulateBatch()
 
 	if err := client.SendBatch(batch); err != nil {

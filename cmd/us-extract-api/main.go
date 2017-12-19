@@ -18,8 +18,10 @@ func main() {
 
 	inputs := NewInputs()
 	inputs.Flags()
-	builder := wireup.NewClientBuilder().WithSecretKeyCredential(inputs.AuthID, inputs.AuthToken).WithDebugHTTPOutput()
-	client := builder.BuildUSExtractAPIClient()
+	client := wireup.BuildUSExtractAPIClient(
+		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
+		wireup.DebugHTTPOutput(),
+	)
 	lookup := inputs.AssembleLookup()
 
 	if err := client.SendLookup(lookup); err != nil {

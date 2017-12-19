@@ -18,8 +18,10 @@ func main() {
 
 	inputs := NewInputs()
 	inputs.Flags()
-	builder := wireup.NewClientBuilder().WithSecretKeyCredential(inputs.AuthID, inputs.AuthToken).WithDebugHTTPOutput()
-	client := builder.BuildUSZIPCodeAPIClient()
+	client := wireup.BuildUSZIPCodeAPIClient(
+		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
+		wireup.DebugHTTPOutput(),
+	)
 	batch := inputs.PopulateBatch()
 
 	if err := client.SendBatch(batch); err != nil {

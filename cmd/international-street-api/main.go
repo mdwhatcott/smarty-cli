@@ -10,7 +10,7 @@ import (
 
 	"github.com/mdwhatcott/helps"
 	"github.com/mdwhatcott/smarty-cli"
-	street "github.com/smartystreets/smartystreets-go-sdk/international-street-api"
+	"github.com/smartystreets/smartystreets-go-sdk/international-street-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
 )
 
@@ -18,8 +18,10 @@ func main() {
 	log.SetFlags(log.Lmicroseconds)
 
 	inputs := NewInputs()
-	builder := wireup.NewClientBuilder().WithSecretKeyCredential(inputs.AuthID, inputs.AuthToken).WithDebugHTTPOutput()
-	client := builder.BuildInternationalStreetAPIClient()
+	client := wireup.BuildInternationalStreetAPIClient(
+		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
+		wireup.DebugHTTPOutput(),
+	)
 	lookup := inputs.AssembleLookup()
 
 	if err := client.SendLookup(lookup); err != nil {
