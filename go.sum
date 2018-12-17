@@ -1,0 +1,16 @@
+github.com/gobwas/glob v0.2.3 h1:A4xDbljILXROh+kObIiy5kIaPYD8e96x1tgBhUI5J+Y=
+github.com/gobwas/glob v0.2.3/go.mod h1:d3Ez4x06l9bZtSvzIay5+Yzi0fmZzPgnTbPcKjJAkT8=
+github.com/mdwhatcott/helps v0.0.0-20180301161133-90caead36a79 h1:zns1h4YNg0j3nz+iuXPmL3jwho8LESQWnvg+Le0K/X4=
+github.com/mdwhatcott/helps v0.0.0-20180301161133-90caead36a79/go.mod h1:Bz25oBcrkp9/byQN2Dy1mxJujorkB5lVh5h66FR/u3Q=
+github.com/sgreben/flagvar v0.0.0-20181101215905-51a0aa284f85 h1:/3LBck8j2DdxxhlFeoNUltDk8XYmNKDJe/ABO+pnH1M=
+github.com/sgreben/flagvar v0.0.0-20181101215905-51a0aa284f85/go.mod h1:Fb8FciZ5gk6PpUehj6eK5oGIbvYB0DXsYXtsqSJcFbk=
+github.com/smartystreets/assertions v0.0.0-20180820201707-7c9eb446e3cf h1:6V1qxN6Usn4jy8unvggSJz/NC790tefw8Zdy6OZS5co=
+github.com/smartystreets/assertions v0.0.0-20180820201707-7c9eb446e3cf/go.mod h1:OnSkiWE9lh6wB0YB77sQom3nweQdgAjqCqsofrRNTgc=
+github.com/smartystreets/clock v0.0.0-20180622225331-ccbde14dc671 h1:wvSmZdRIBm4DONZZdBPoD/yjtj2wLiYowPDr55IZHxI=
+github.com/smartystreets/clock v0.0.0-20180622225331-ccbde14dc671/go.mod h1:BsOg323oIf8BtWXjDSLZHE2jVzhjSahj1I+0ehz15rg=
+github.com/smartystreets/gunit v0.0.0-20180314194857-6f0d6275bdcd h1:p5kvxG4NHogJX1brTLtvUSGdW0/aBvIyqDSW7tmnsmQ=
+github.com/smartystreets/gunit v0.0.0-20180314194857-6f0d6275bdcd/go.mod h1:XUKj4gbqj2QvJk/OdLWzyZ3FYli0f+MdpngyryX0gcw=
+github.com/smartystreets/logging v0.0.0-20180120051237-fcc265ebff02 h1:ja8mc9Oq8jnzSxBBZAOkxYudug16fUi5YdSTueqp9qQ=
+github.com/smartystreets/logging v0.0.0-20180120051237-fcc265ebff02/go.mod h1:CFznTL3ZATteeeLCfHP4kXU02NEeNiHsmMyxC6Fy2k0=
+github.com/smartystreets/smartystreets-go-sdk v0.0.0-20180926221240-b7a7602f0fdc h1:GQ73GvxuW2fOSXOSLd6K1uJ0z65USJC53oYOAKwLZJA=
+github.com/smartystreets/smartystreets-go-sdk v0.0.0-20180926221240-b7a7602f0fdc/go.mod h1:IViBIfxdMx0gB2dzmP5baCjG+I9UbcaptYcJSSf+wkw=
