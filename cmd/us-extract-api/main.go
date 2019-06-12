@@ -7,10 +7,12 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/mdwhatcott/helps"
-	"github.com/mdwhatcott/smarty-cli"
 	"github.com/smartystreets/smartystreets-go-sdk/us-extract-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
+
+	"github.com/mdwhatcott/helps"
+
+	"github.com/mdwhatcott/smarty-cli"
 )
 
 func main() {

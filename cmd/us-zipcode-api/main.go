@@ -7,10 +7,12 @@ import (
 	"log"
 	"net/url"
 
-	"github.com/mdwhatcott/helps"
-	"github.com/mdwhatcott/smarty-cli"
 	"github.com/smartystreets/smartystreets-go-sdk/us-zipcode-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
+
+	"github.com/mdwhatcott/helps"
+
+	"github.com/mdwhatcott/smarty-cli"
 )
 
 func main() {

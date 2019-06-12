@@ -9,8 +9,9 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/mdwhatcott/smarty-cli"
 	"github.com/sgreben/flagvar"
+
+	"github.com/mdwhatcott/smarty-cli"
 )
 
 const (
