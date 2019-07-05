@@ -21,6 +21,7 @@ func main() {
 	inputs := NewInputs()
 	inputs.Flags()
 	client := wireup.BuildUSZIPCodeAPIClient(
+		wireup.CustomBaseURL(inputs.baseURL),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
 		wireup.DebugHTTPOutput(),
 	)
@@ -43,6 +44,8 @@ func main() {
 type Inputs struct {
 	*cli.Inputs
 
+	baseURL string
+
 	city    string
 	state   string
 	zipCode string
@@ -58,6 +61,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) Flags() {
+	flag.StringVar(&this.baseURL, "baseURL", "https://us-zipcode.api.smartystreets.com", "The URL")
 	flag.StringVar(&this.city, "city", "", "The City (US Street API, US ZIP Code API)")
 	flag.StringVar(&this.state, "state", "", "The State (US Street API, US ZIP Code API)")
 	flag.StringVar(&this.zipCode, "zipcode", "", "The ZIP Code (US Street API, US ZIP Code API)")

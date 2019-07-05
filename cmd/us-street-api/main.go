@@ -21,6 +21,7 @@ func main() {
 
 	inputs := NewInputs()
 	client := wireup.BuildUSStreetAPIClient(
+		wireup.CustomBaseURL(inputs.baseURL),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
 		wireup.DebugHTTPOutput(),
 	)
@@ -43,6 +44,8 @@ func main() {
 type Inputs struct {
 	*cli.Inputs
 
+	baseURL string
+
 	addressee         string
 	urbanization      string
 	street1           string
@@ -56,7 +59,7 @@ type Inputs struct {
 	maxCandidateCount int
 	matchStrategy     string
 
-	lookup *street.Lookup
+	lookup  *street.Lookup
 }
 
 func NewInputs() *Inputs {
@@ -69,6 +72,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) flags() {
+	flag.StringVar(&this.baseURL, "baseURL", "https://us-street.api.smartystreets.com", "The URL")
 	flag.StringVar(&this.addressee, "addressee", "", "The Addresses (US Street API)")
 	flag.StringVar(&this.urbanization, "urbanization", "", "The Urbanization (US Street API)")
 	flag.StringVar(&this.street1, "street", "", "The Street1 (US Street API)")
@@ -88,7 +92,7 @@ func (this *Inputs) PopulateBatch() *street.Batch {
 	batch := street.NewBatch()
 
 	var lookups []*street.Lookup
-	json.Unmarshal([]byte(this.RawText), &lookups)
+	_ = json.Unmarshal([]byte(this.RawText), &lookups)
 	for _, lookup := range lookups {
 		batch.Append(lookup)
 	}

@@ -21,6 +21,7 @@ func main() {
 
 	inputs := NewInputs()
 	client := wireup.BuildInternationalStreetAPIClient(
+		wireup.CustomBaseURL(inputs.baseURL),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
 		wireup.DebugHTTPOutput(),
 	)
@@ -38,6 +39,8 @@ func main() {
 
 type Inputs struct {
 	*cli.Inputs
+
+	baseURL string
 
 	example            string
 	country            string
@@ -72,6 +75,7 @@ func (this *Inputs) flags() {
 	}
 	sort.Strings(labels)
 
+	flag.StringVar(&this.baseURL, "baseURL", "https://us-extract.api.smartystreets.com", "The URL")
 	flag.StringVar(&this.example, "example", "", "The label of the example lookup you wish to submit (ie. "+strings.Join(labels, ", ")+").")
 	flag.StringVar(&this.country, "country", "", "The country field.")
 	flag.StringVar(&this.language, "language", "", "The language field.")

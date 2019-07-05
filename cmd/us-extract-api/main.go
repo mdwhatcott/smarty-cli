@@ -21,6 +21,7 @@ func main() {
 	inputs := NewInputs()
 	inputs.Flags()
 	client := wireup.BuildUSExtractAPIClient(
+		wireup.CustomBaseURL(inputs.baseURL),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
 		wireup.DebugHTTPOutput(),
 	)
@@ -39,6 +40,8 @@ func main() {
 type Inputs struct {
 	*cli.Inputs
 
+	baseURL string
+
 	text             string
 	html             string // true, false, or blank
 	aggressive       bool
@@ -56,6 +59,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) Flags() {
+	flag.StringVar(&this.baseURL, "baseURL", "https://us-extract.api.smartystreets.com", "The URL")
 	flag.StringVar(&this.text, "text", "", "The POST body.")
 	flag.StringVar(&this.html, "html", "", "The html field (derived when blank, 'true' or 'false').")
 	flag.BoolVar(&this.aggressive, "aggressive", false, "The aggressive bool.")
