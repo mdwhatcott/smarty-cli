@@ -75,7 +75,7 @@ func (this *Inputs) flags() {
 	}
 	sort.Strings(labels)
 
-	flag.StringVar(&this.baseURL, "baseURL", "https://us-extract.api.smartystreets.com", "The URL")
+	flag.StringVar(&this.baseURL, "baseURL", "https://international-street.api.smartystreets.com", "The URL")
 	flag.StringVar(&this.example, "example", "", "The label of the example lookup you wish to submit (ie. "+strings.Join(labels, ", ")+").")
 	flag.StringVar(&this.country, "country", "", "The country field.")
 	flag.StringVar(&this.language, "language", "", "The language field.")
