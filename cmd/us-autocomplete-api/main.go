@@ -62,7 +62,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) Flags() {
-	flag.StringVar(&this.baseURL, "baseURL", "https://us-extract.api.smartystreets.com", "The URL")
+	flag.StringVar(&this.baseURL, "baseURL", "https://us-autocomplete.api.smartystreets.com", "The URL")
 	flag.StringVar(&this.prefix, "prefix", "", "The prefix field.")
 	flag.StringVar(&this.geolocatePrecision, "geolocate_precision", "city", "The geolocate_precision field (One of 'city', 'state', or 'none'. A value of 'None' will set the geolocate field to false).")
 	flag.StringVar(&this.prefer, "prefer", "", "The prefer field.")
