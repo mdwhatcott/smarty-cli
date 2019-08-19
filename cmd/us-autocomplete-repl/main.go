@@ -1,44 +1,77 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
-	"log"
 	"net/url"
 	"strconv"
 	"strings"
 
-	"github.com/smartystreets/smartystreets-go-sdk/us-autocomplete-api"
+	"github.com/nsf/termbox-go"
+	autocomplete "github.com/smartystreets/smartystreets-go-sdk/us-autocomplete-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
 
-	"github.com/mdwhatcott/helps"
-
-	"github.com/mdwhatcott/smarty-cli"
+	cli "github.com/mdwhatcott/smarty-cli"
 )
 
-// TODO: make this into a REPL that lists autocomplete suggestions!
-
 func main() {
-	log.SetFlags(log.Lmicroseconds)
-
 	inputs := NewInputs()
 	inputs.Flags()
 	client := wireup.BuildUSAutocompleteAPIClient(
 		wireup.CustomBaseURL(inputs.baseURL),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
-		wireup.DebugHTTPOutput(),
 	)
 	lookup := inputs.AssembleLookup()
 
-	if err := client.SendLookup(lookup); err != nil {
-		log.Fatal(err)
+	err := termbox.Init()
+	if err != nil {
+		panic(err)
 	}
 
-	log.Println("Formatted Result:")
-	fmt.Println(helps.DumpJSON(lookup.Results))
-}
+	defer termbox.Close()
 
-/////////////
+	line := new(bytes.Buffer)
+
+keyPressListenerLoop:
+	for {
+		switch ev := termbox.PollEvent(); ev.Type {
+		case termbox.EventKey:
+			switch ev.Key {
+			case termbox.KeyEsc:
+				break keyPressListenerLoop
+			case termbox.KeyBackspace, termbox.KeyBackspace2:
+				if line.Len() == 0 {
+					continue
+				}
+				content := line.String()
+				line.Reset()
+				line.WriteString(content[:len(content)-1])
+			case termbox.KeyEnter:
+				line.Reset()
+			case termbox.KeySpace:
+				line.WriteRune(' ')
+			default:
+				line.WriteRune(ev.Ch)
+			}
+		case termbox.EventError:
+			panic(ev.Err)
+		}
+
+		lookup.Prefix = line.String()
+		err := client.SendLookup(lookup)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println()
+		fmt.Println(">>>", lookup.Prefix)
+		fmt.Println()
+		for r, result := range lookup.Results {
+			fmt.Printf("%d: [%s]\n", r, result.Text)
+		}
+		lookup.Results = nil
+	}
+}
 
 type Inputs struct {
 	*cli.Inputs
@@ -90,10 +123,6 @@ func (this *Inputs) AssembleLookup() *autocomplete.Lookup {
 	}
 
 	this.assembleLookupFromFlags()
-
-	if this.lookup.Prefix == "" {
-		log.Fatal("No prefix provided.")
-	}
 
 	return this.lookup
 }

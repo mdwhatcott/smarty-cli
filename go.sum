@@ -1,7 +1,11 @@
 github.com/gobwas/glob v0.2.3 h1:A4xDbljILXROh+kObIiy5kIaPYD8e96x1tgBhUI5J+Y=
 github.com/gobwas/glob v0.2.3/go.mod h1:d3Ez4x06l9bZtSvzIay5+Yzi0fmZzPgnTbPcKjJAkT8=
+github.com/mattn/go-runewidth v0.0.4 h1:2BvfKmzob6Bmd4YsL0zygOqfdFnK7GR4QL06Do4/p7Y=
+github.com/mattn/go-runewidth v0.0.4/go.mod h1:LwmH8dsx7+W8Uxz3IHJYH5QSwggIsqBzpuz5H//U1FU=
 github.com/mdwhatcott/helps v1.0.0 h1:WgpAJtMWQ+MTPrVTJdFl9nJ5JUM9qYXlNIWVUaKf8dQ=
 github.com/mdwhatcott/helps v1.0.0/go.mod h1:U99EncERm0oTOLjtBDwR5GmY0esrOgAcZhlavcZozik=
+github.com/nsf/termbox-go v0.0.0-20190817171036-93860e161317 h1:hhGN4SFXgXo61Q4Sjj/X9sBjyeSa2kdpaOzCO+8EVQw=
+github.com/nsf/termbox-go v0.0.0-20190817171036-93860e161317/go.mod h1:IuKpRQcYE1Tfu+oAQqaLisqDeXgjyyltCfsaoYN18NQ=
 github.com/sgreben/flagvar v0.0.0-20190531173411-f77358616bad h1:/LtIjTwpeN7oWamY3zzZc1i8jCFquoE7H19w2yFUszU=
 github.com/sgreben/flagvar v0.0.0-20190531173411-f77358616bad/go.mod h1:Fb8FciZ5gk6PpUehj6eK5oGIbvYB0DXsYXtsqSJcFbk=
 github.com/smartystreets/assertions v1.0.0 h1:UVQPSSmc3qtTi+zPPkCXvZX9VvW/xT/NsRvKfwY81a8=
