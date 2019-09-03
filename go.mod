@@ -8,3 +8,5 @@ require (
 	github.com/sgreben/flagvar v0.0.0-20190531173411-f77358616bad
 	github.com/smartystreets/smartystreets-go-sdk v1.0.0
 )
+
+go 1.13
