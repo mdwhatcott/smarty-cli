@@ -11,12 +11,9 @@ import (
 	"github.com/smartystreets/smartystreets-go-sdk/us-autocomplete-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
 
-	"github.com/mdwhatcott/helps"
-
 	"github.com/mdwhatcott/smarty-cli"
+	"github.com/mdwhatcott/smarty-cli/helps"
 )
-
-// TODO: make this into a REPL that lists autocomplete suggestions!
 
 func main() {
 	log.SetFlags(log.Lmicroseconds)

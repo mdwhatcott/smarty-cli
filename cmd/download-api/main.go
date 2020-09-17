@@ -8,8 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-
-	"github.com/sgreben/flagvar"
+	"strings"
 
 	"github.com/mdwhatcott/smarty-cli"
 )
@@ -45,7 +44,8 @@ func main() {
 
 	var outputPath string
 	var version string
-	choices := &flagvar.Enum{Choices: []string{
+	var choice string
+	flag.StringVar(&choice, "package", "", "Which package? choose from: " + strings.Join([]string{
 		USStreetAPI,
 		USStreetData,
 		USZIPCodeAPI,
@@ -55,24 +55,20 @@ func main() {
 		USExtractAPI,
 		InternationalStreetAPI,
 		InternationalStreetData,
-	}}
-	flag.Var(choices, "package", "Which package? "+choices.Help())
+	}, ","))
 	flag.StringVar(&version, "version", "latest", "Which version?")
 	flag.StringVar(&outputPath, "output", "", "Output file path.")
 	input := cli.NewInputs()
 	input.ParseFlags()
 
-	if choices.String() == "" {
-		log.Fatal("Required: -package")
-	}
 	if outputPath == "" {
-		outputPath = choices.String() + extension
+		outputPath = choice + extension
 	}
-	fmt.Println(choices.String(), targets[choices.String()])
+	fmt.Println(choice, targets[choice])
 
 	address, err := url.Parse(
 		"https://download.api.smartystreets.com" + "/" +
-			targets[choices.String()] + "/" +
+			targets[choice] + "/" +
 			version + extension,
 	)
 	if err != nil {

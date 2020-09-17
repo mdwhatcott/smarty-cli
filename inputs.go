@@ -44,4 +44,10 @@ func (this *Inputs) ParseFlags() {
 }
 
 const authDisclaimerSuffix = "Even when present, auth-id and auth-token query string values will be ignored. " +
-	"(US Street API, US ZIP Code API, US Autocomplete API, US Extract API, International Street API)"
+	"(" +
+	"US Street API, " +
+	"US ZIP Code API, " +
+	"US Autocomplete API, " +
+	"US Extract API, " +
+	"US Reverse Geocoding API, " +
+	"International Street API)"
