@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"os"
 	"strconv"
 	"strings"
 
@@ -74,7 +75,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) flags() {
-	flag.StringVar(&this.baseURL, "baseURL", "https://us-street.api.smartystreets.com", "The URL")
+	flag.StringVar(&this.baseURL, "baseURL", os.Getenv("SMARTY_US_STREET_API"), "The URL")
 	flag.StringVar(&this.licenses, "licenses", "us-standard-cloud", "The licenses")
 	flag.StringVar(&this.addressee, "addressee", "", "The Addresses (US Street API)")
 	flag.StringVar(&this.urbanization, "urbanization", "", "The Urbanization (US Street API)")

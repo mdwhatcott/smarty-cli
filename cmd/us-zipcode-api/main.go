@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"os"
 
 	"github.com/smartystreets/smartystreets-go-sdk/us-zipcode-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
@@ -60,7 +61,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) Flags() {
-	flag.StringVar(&this.baseURL, "baseURL", "https://us-zipcode.api.smartystreets.com", "The URL")
+	flag.StringVar(&this.baseURL, "baseURL", os.Getenv("SMARTY_US_ZIPCODE_API"), "The URL")
 	flag.StringVar(&this.city, "city", "", "The City (US Street API, US ZIP Code API)")
 	flag.StringVar(&this.state, "state", "", "The State (US Street API, US ZIP Code API)")
 	flag.StringVar(&this.zipCode, "zipcode", "", "The ZIP Code (US Street API, US ZIP Code API)")

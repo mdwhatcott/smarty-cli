@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"os"
 	"strconv"
 
 	"github.com/smartystreets/smartystreets-go-sdk/us-extract-api"
@@ -58,7 +59,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) Flags() {
-	flag.StringVar(&this.baseURL, "baseURL", "https://us-extract.api.smartystreets.com", "The URL")
+	flag.StringVar(&this.baseURL, "baseURL", os.Getenv("SMARTY_US_EXTRACT_API"), "The URL")
 	flag.StringVar(&this.text, "text", "", "The POST body.")
 	flag.StringVar(&this.html, "html", "", "The html field (derived when blank, 'true' or 'false').")
 	flag.BoolVar(&this.aggressive, "aggressive", false, "The aggressive bool.")
