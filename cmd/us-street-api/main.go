@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/url"
 	"strconv"
+	"strings"
 
 	"github.com/smartystreets/smartystreets-go-sdk/us-street-api"
 	"github.com/smartystreets/smartystreets-go-sdk/wireup"
@@ -21,6 +22,7 @@ func main() {
 	inputs := NewInputs()
 	client := wireup.BuildUSStreetAPIClient(
 		wireup.CustomBaseURL(inputs.baseURL),
+		wireup.WithLicenses(inputs.Licenses()...),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
 		wireup.DebugHTTPOutput(),
 	)
@@ -43,7 +45,8 @@ func main() {
 type Inputs struct {
 	*cli.Inputs
 
-	baseURL string
+	baseURL  string
+	licenses string
 
 	addressee         string
 	urbanization      string
@@ -58,7 +61,7 @@ type Inputs struct {
 	maxCandidateCount int
 	matchStrategy     string
 
-	lookup  *street.Lookup
+	lookup *street.Lookup
 }
 
 func NewInputs() *Inputs {
@@ -72,6 +75,7 @@ func NewInputs() *Inputs {
 
 func (this *Inputs) flags() {
 	flag.StringVar(&this.baseURL, "baseURL", "https://us-street.api.smartystreets.com", "The URL")
+	flag.StringVar(&this.licenses, "licenses", "us-standard-cloud", "The licenses")
 	flag.StringVar(&this.addressee, "addressee", "", "The Addresses (US Street API)")
 	flag.StringVar(&this.urbanization, "urbanization", "", "The Urbanization (US Street API)")
 	flag.StringVar(&this.street1, "street", "", "The Street1 (US Street API)")
@@ -85,6 +89,10 @@ func (this *Inputs) flags() {
 	flag.IntVar(&this.maxCandidateCount, "candidates", 10, "The max candidate count (US Street API)")
 	flag.StringVar(&this.matchStrategy, "match", string(street.MatchStrict), "The Match Strategy (US Street API)")
 	this.ParseFlags()
+}
+
+func (this *Inputs) Licenses() []string {
+	return strings.Split(this.licenses, ",")
 }
 
 func (this *Inputs) PopulateBatch() *street.Batch {
