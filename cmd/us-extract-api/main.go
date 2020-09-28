@@ -24,6 +24,7 @@ func main() {
 		wireup.CustomBaseURL(inputs.baseURL),
 		wireup.SecretKeyCredential(inputs.AuthID, inputs.AuthToken),
 		wireup.DebugHTTPOutput(),
+		wireup.WithLicenses(inputs.licenses),
 	)
 	lookup := inputs.AssembleLookup()
 
@@ -40,7 +41,8 @@ func main() {
 type Inputs struct {
 	*cli.Inputs
 
-	baseURL string
+	licenses string
+	baseURL  string
 
 	text             string
 	html             string // true, false, or blank
@@ -59,6 +61,7 @@ func NewInputs() *Inputs {
 }
 
 func (this *Inputs) Flags() {
+	flag.StringVar(&this.licenses, "licenses", "us-standard-cloud", "The licenses")
 	flag.StringVar(&this.baseURL, "baseURL", os.Getenv("SMARTY_US_EXTRACT_API"), "The URL")
 	flag.StringVar(&this.text, "text", "", "The POST body.")
 	flag.StringVar(&this.html, "html", "", "The html field (derived when blank, 'true' or 'false').")

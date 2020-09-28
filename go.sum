@@ -6,5 +6,5 @@ github.com/smartystreets/gunit v1.3.4 h1:iHc8Rfhb/uCOc9a3KGuD3ut22L+hLIVaqR1o5fS
 github.com/smartystreets/gunit v1.3.4/go.mod h1:ZjM1ozSIMJlAz/ay4SG8PeKF00ckUp+zMHZXV9/bvak=
 github.com/smartystreets/logging v1.1.1 h1:4UlnyYWB7LDd216NTuP3zTVvMQZREtPrDnJbsz0zftI=
 github.com/smartystreets/logging v1.1.1/go.mod h1:NwFCEPbtiTIug+UCtTbDVjgcJNfandE3brDx0x7QEY8=
-github.com/smartystreets/smartystreets-go-sdk v1.8.0 h1:BXXQmWkAwgHvEEiBb57ZZZGoAfJkhlA4XCm51JH72zI=
-github.com/smartystreets/smartystreets-go-sdk v1.8.0/go.mod h1:8iE/TFsnjYz0n8kHnaHeFE9fukgVw64ykXg58ZPjp8k=
+github.com/smartystreets/smartystreets-go-sdk v1.8.1 h1:UzaqXXjrYlC3E/+D8BbCOE9EuoTDim5exau656rxMuM=
+github.com/smartystreets/smartystreets-go-sdk v1.8.1/go.mod h1:8iE/TFsnjYz0n8kHnaHeFE9fukgVw64ykXg58ZPjp8k=
