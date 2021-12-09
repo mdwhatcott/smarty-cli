@@ -1,10 +1,6 @@
-github.com/smartystreets/assertions v1.1.0 h1:MkTeG1DMwsrdH7QtLXy5W+fUxWq+vmb6cLmyJ7aRtF0=
-github.com/smartystreets/assertions v1.1.0/go.mod h1:tcbTF8ujkAEcZ8TElKY+i30BzYlVhC/LOxJk7iOWnoo=
-github.com/smartystreets/clock v1.0.3 h1:rZ2gtRux+yALko49BywVFcrWcfRg8V86Q+wwYP+SCWs=
-github.com/smartystreets/clock v1.0.3/go.mod h1:SeXxrsL1+0aE4256nYPPBWwuA9BGfiXu5+bxfXFsPGA=
-github.com/smartystreets/gunit v1.3.4 h1:iHc8Rfhb/uCOc9a3KGuD3ut22L+hLIVaqR1o5fS6zC4=
-github.com/smartystreets/gunit v1.3.4/go.mod h1:ZjM1ozSIMJlAz/ay4SG8PeKF00ckUp+zMHZXV9/bvak=
-github.com/smartystreets/logging v1.1.1 h1:4UlnyYWB7LDd216NTuP3zTVvMQZREtPrDnJbsz0zftI=
-github.com/smartystreets/logging v1.1.1/go.mod h1:NwFCEPbtiTIug+UCtTbDVjgcJNfandE3brDx0x7QEY8=
-github.com/smartystreets/smartystreets-go-sdk v1.8.1 h1:UzaqXXjrYlC3E/+D8BbCOE9EuoTDim5exau656rxMuM=
-github.com/smartystreets/smartystreets-go-sdk v1.8.1/go.mod h1:8iE/TFsnjYz0n8kHnaHeFE9fukgVw64ykXg58ZPjp8k=
+github.com/smartystreets/assertions v1.2.0 h1:42S6lae5dvLc7BrLu/0ugRtcFVjoJNMC/N3yZFZkDFs=
+github.com/smartystreets/assertions v1.2.0/go.mod h1:tcbTF8ujkAEcZ8TElKY+i30BzYlVhC/LOxJk7iOWnoo=
+github.com/smartystreets/gunit v1.4.2 h1:tyWYZffdPhQPfK5VsMQXfauwnJkqg7Tv5DLuQVYxq3Q=
+github.com/smartystreets/gunit v1.4.2/go.mod h1:ZjM1ozSIMJlAz/ay4SG8PeKF00ckUp+zMHZXV9/bvak=
+github.com/smartystreets/smartystreets-go-sdk v1.13.8 h1:pOUsjBD0SYQB8mpemW3e0NYsCfZ+fr0jr5adjLioDaY=
+github.com/smartystreets/smartystreets-go-sdk v1.13.8/go.mod h1:4aCECPNd0NXu/lNAxCS6GwlcC7Hc4e73nqzZca8fEqY=
